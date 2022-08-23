@@ -7,39 +7,57 @@ import { Link } from "gatsby"
 
 const StyledNavbar = styled.nav`
     z-index: 10;
-    padding: 0rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     font-size: 0.8rem;
-    // Profiles Div
+    padding: 0 5rem;
+    
+    // Links Div
+
     .landing-logo {
-      padding-left: 5rem;
       font-weight: 700;
-      color: #048A81;
+      color: #000;
     }
-    .profiles-div {
+
+    .links-div {
       z-index: 10;
-      padding: 0;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      
       a {
-          padding: 1.8rem 0.8rem 1.8rem 0.8rem;
+          padding: 1rem 0.8rem 1rem 0.8rem;
+          margin: 1rem 1rem 1rem 0rem;
           text-decoration: none;
-          font-weight: 500;
+          font-weight: 600;
           transition-duration: 0.5s;
-          border-bottom: 0.3rem solid rgba(0, 0, 0, 0);
           color: #04151F;
+
+          &.link-download {
+            margin-left: 0;
+            background: #fff;
+            padding: 1rem 2rem;
+            border: 0.08rem black solid;
+            border-radius: 4rem;
+            
+            &:hover {
+                color: #000;
+                -webkit-box-shadow: 4px 4px 0px 0px rgba(135,2,245,1);
+                -moz-box-shadow: 4px 4px 0px 0px rgba(135,2,245,1);
+                box-shadow: 4px 4px 0px 0px rgba(135,2,245,1);
+            }
+          }
+
           &:hover {
-            color: #048A81;
             transition-duration: 0.5s;
-            border-bottom: 0.3rem solid #E2FADB;
+            color: rgba(135,2,245,1);
           }
       }
     }
+
     .action-button {
       margin-right: 5rem;
       background: #048A81;
@@ -52,26 +70,30 @@ const StyledNavbar = styled.nav`
           transform: scale(1.1);
       }
     }
+
     .link {
       color: #048A81;
       margin-right: 2rem;
       cursor: pointer;
     }
+
     &#navbar {
-      background-color: rgba(255, 255, 255, .8);  
+      background-color: rgba(255, 255, 255, 1);  
       backdrop-filter: blur(1rem);
       -webkit-backdrop-filter: blur(1rem);
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
+      border: 0.08rem black solid;
       position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      width: 100%;
       transition: top 0.3s;
     }
+
     &#navbar.hide-shadow {
       transition: top 0.3s;
     }
+
     // Hamburger Menu
     
     .menu-icon {
@@ -116,6 +138,7 @@ const StyledNavbar = styled.nav`
         bottom: 0;
       }
     }
+
     &.active,
     .menu-icon__cheeckbox:checked + div {
       span {
@@ -131,15 +154,18 @@ const StyledNavbar = styled.nav`
         }
       }
     }
+
     &.active:hover span:first-of-type,
     &.active:hover span:last-of-type,
     &:hover .menu-icon__cheeckbox:checked + div span:first-of-type,
     &:hover .menu-icon__cheeckbox:checked + div span:last-of-type {
       width: 22px;
     }
+
     &:hover {
       
       // No need hover effect on mobile.
+
       @media (min-width: 1024px) {
         span:first-of-type {
           width: 26px;
@@ -225,18 +251,13 @@ const Navbar = () => {
   return (
     <StyledNavbar id='navbar' className='hide-shadow'>
 
-      <p class="landing-logo">GoHealthy</p>
+      <p class="landing-logo">MinCal</p>
       
-      <div class="profiles-div">
-        <a className='link-nav' href='#'>Pacientes</a>
-        <a className='link-nav' href='#'>Doctores</a>
-        <a className='link-nav' href='#'>Administrativo</a>
-        <a className='link-nav' href='#'>Precios</a>
-      </div>
-
-      <div class="actions-div">
-        <a class="link">Ingresar</a>
-        <a class="action-button nav-hide">Descargar la app</a>
+      <div class="links-div">
+        <a className='link-nav' href='#'>Home</a>
+        <a className='link-nav' href='#'>Blog</a>
+        <a className='link-nav' href='#'>Contact Us</a>
+        <a className='link-download' href='#'>Get MinCal</a>
       </div>
 
       <div class="menu-icon" onClick={openMenu}>
